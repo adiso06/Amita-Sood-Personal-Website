@@ -1,7 +1,7 @@
 {
   "framework": "vite",
-  "installCommand": "npm install",
-  "buildCommand": "npm run build",
+  "installCommand": "echo 'Skipping install'",
+  "buildCommand": "echo 'Skipping build - using pre-built dist'",
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
