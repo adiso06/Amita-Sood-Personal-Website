@@ -15,14 +15,14 @@ const ContactInfo = () => {
             <div className="text-secondary mr-4 mt-1"><i className="fas fa-phone"></i></div>
             <div>
               <p className="font-medium">Phone:</p>
-              <p className="text-gray-600">(678) 205-9930</p>
+              <p className="text-gray-600">678-205-9930</p>
             </div>
           </div>
           <div className="flex items-start">
             <div className="text-secondary mr-4 mt-1"><i className="fas fa-envelope"></i></div>
             <div>
               <p className="font-medium">Email:</p>
-              <p className="text-gray-600">amita.sood@chapmanhall.com</p>
+              <p className="text-gray-600">amita_sood@hotmail.com</p>
             </div>
           </div>
         </div>

@@ -1,6 +1,63 @@
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { Testimonial } from "@shared/schema";
+
+// Define Testimonial interface
+interface Testimonial {
+  id: number;
+  name: string;
+  image?: string;
+  relationship: string;
+  text: string;
+  rating: number;
+  yearsWithRealtor?: number;
+  createdAt?: Date;
+}
+
+// Hardcoded testimonial data
+const testimonialData: Testimonial[] = [
+  {
+    id: 1,
+    name: "Robert Johnson",
+    relationship: "Client for 13+ years",
+    text: "We've been working with Amita for over 13 years. She's helped us buy multiple investment properties and our own home. Very honest, very personable and top of her game. I highly recommend her for both buying and selling.",
+    rating: 5,
+    yearsWithRealtor: 13,
+    image: "/images/amita-sood.jpg"
+  },
+  {
+    id: 2,
+    name: "Sarah Williams",
+    relationship: "Purchased two homes",
+    text: "Amita will make home buying a breeze! She is professional, honest, and effective at negotiating with the other party. I've purchased two homes with her assistance and wouldn't hesitate to work with her again.",
+    rating: 5,
+    image: "/images/amita-sood.jpg"
+  },
+  {
+    id: 3,
+    name: "Michael Thompson",
+    relationship: "Landlord for 7+ years",
+    text: "Amita has kept our interests as landlords in focus through multiple rental application processes over many years. She is knowledgeable, fair, and always responsive. I wouldn't trust anyone else with our properties.",
+    rating: 5,
+    yearsWithRealtor: 7,
+    image: "/images/amita-sood.jpg"
+  },
+  {
+    id: 4,
+    name: "Jennifer Davis",
+    relationship: "First-time homebuyer",
+    text: "As a first-time homebuyer, I was nervous about the process, but Amita guided me every step of the way. Her patience, expertise, and responsiveness made all the difference. I found my dream home thanks to her hard work!",
+    rating: 5,
+    image: "/images/amita-sood.jpg"
+  },
+  {
+    id: 5,
+    name: "David Miller",
+    relationship: "Repeat client for 9+ years",
+    text: "I've worked with Amita on three separate real estate transactions over the past 9 years. Her market knowledge is exceptional, and she always goes above and beyond to ensure a smooth process. I highly recommend her services!",
+    rating: 5,
+    yearsWithRealtor: 9,
+    image: "/images/amita-sood.jpg"
+  }
+];
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
@@ -32,44 +89,11 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => {
 };
 
 const Testimonials = () => {
-  const { data: testimonials, isLoading, error } = useQuery({ 
-    queryKey: ['/api/testimonials'],
-  });
-
   useEffect(() => {
     document.title = "Testimonials | Amita Sood Real Estate";
     // Scroll to top on page load
     window.scrollTo(0, 0);
   }, []);
-
-  if (isLoading) {
-    return (
-      <div className="bg-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-playfair font-bold mb-4">
-              Loading Testimonials...
-            </h2>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-playfair font-bold mb-4">
-              Error Loading Testimonials
-            </h2>
-            <p>Please try again later</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -91,7 +115,7 @@ const Testimonials = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {testimonials.map((testimonial: Testimonial) => (
+            {testimonialData.map((testimonial) => (
               <TestimonialCard key={testimonial.id} testimonial={testimonial} />
             ))}
           </div>

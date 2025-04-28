@@ -1,41 +1,57 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { AreaServed } from "@shared/schema";
+
+// Define AreaServed interface
+interface AreaServed {
+  id: number;
+  county: string;
+  cities: string[];
+}
+
+// Hardcoded area data
+const areasData: AreaServed[] = [
+  {
+    id: 1,
+    county: "Fulton",
+    cities: ["Atlanta", "Alpharetta", "Sandy Springs", "Roswell", "Johns Creek", "Milton"]
+  },
+  {
+    id: 2,
+    county: "DeKalb",
+    cities: ["Brookhaven", "Decatur", "Druid Hills", "Dunwoody"]
+  },
+  {
+    id: 3,
+    county: "Cobb",
+    cities: ["Marietta", "Kennesaw", "Smyrna"]
+  },
+  {
+    id: 4,
+    county: "Gwinnett",
+    cities: ["Loganville", "Norcross", "Duluth", "Suwanee", "Lilburn"]
+  },
+  {
+    id: 5,
+    county: "Cherokee",
+    cities: ["Woodstock"]
+  },
+  {
+    id: 6,
+    county: "Forsyth",
+    cities: ["Cumming"]
+  },
+  {
+    id: 7,
+    county: "Douglas",
+    cities: ["Douglasville"]
+  },
+  {
+    id: 8,
+    county: "Walton",
+    cities: ["Loganville"]
+  }
+];
 
 const Areas = () => {
-  const { data: areas, isLoading, error } = useQuery({ 
-    queryKey: ['/api/areas'],
-  });
-
-  if (isLoading) {
-    return (
-      <section id="areas" className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-playfair font-bold mb-4">
-              Loading Areas...
-            </h2>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="areas" className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-playfair font-bold mb-4">
-              Error Loading Areas
-            </h2>
-            <p>Please try again later</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="areas" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,7 +79,7 @@ const Areas = () => {
               Serving Multiple Counties Across Metro Atlanta
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {areas.map((area: AreaServed) => (
+              {areasData.map((area: AreaServed) => (
                 <div key={area.id} className="bg-light rounded-lg p-4">
                   <h4 className="font-semibold text-primary mb-2">{area.county} County</h4>
                   <ul className="text-gray-600 space-y-1">

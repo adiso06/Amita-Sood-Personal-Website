@@ -190,11 +190,11 @@ const PropertyDetail = () => {
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center">
                     <i className="fas fa-phone text-secondary mr-3"></i>
-                    <span>(678) 205-9930</span>
+                    <span>678-205-9930</span>
                   </div>
                   <div className="flex items-center">
                     <i className="fas fa-envelope text-secondary mr-3"></i>
-                    <span>amita.sood@chapmanhall.com</span>
+                    <span>amita_sood@hotmail.com</span>
                   </div>
                 </div>
 

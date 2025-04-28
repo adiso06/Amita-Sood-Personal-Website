@@ -67,7 +67,7 @@ const Contact = () => {
             </p>
             <p className="mb-4">
               <i className="fas fa-phone-alt text-secondary mr-2"></i>
-              For immediate assistance, please call (678) 205-9930
+              For immediate assistance, please call 678-205-9930
             </p>
           </div>
         </div>
@@ -110,7 +110,7 @@ const Contact = () => {
               <p className="text-gray-600 mb-4">
                 I'm happy to answer any questions about the Atlanta real estate market.
               </p>
-              <a href="mailto:amita.sood@chapmanhall.com" className="text-secondary hover:text-primary font-medium transition duration-200">
+              <a href="mailto:amita_sood@hotmail.com" className="text-secondary hover:text-primary font-medium transition duration-200">
                 Email Me →
               </a>
             </div>

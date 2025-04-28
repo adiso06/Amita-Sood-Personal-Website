@@ -109,12 +109,12 @@ const Footer = () => {
                 <span>1772 Century Blvd NE<br />Atlanta, GA 30345</span>
               </li>
               <li className="flex items-center">
-                <i className="fas fa-phone mr-3 text-secondary"></i>
-                <span>(404) 555-1234</span>
+                <i className="fas fa-phone-alt mr-3 text-secondary"></i>
+                <span>678-205-9930</span>
               </li>
               <li className="flex items-center">
                 <i className="fas fa-envelope mr-3 text-secondary"></i>
-                <span>amita.sood@chapmanhall.com</span>
+                <span>amita_sood@hotmail.com</span>
               </li>
             </ul>
           </div>

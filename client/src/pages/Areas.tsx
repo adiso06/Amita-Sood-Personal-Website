@@ -1,65 +1,87 @@
 import { useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { AreaServed } from "@shared/schema";
 
+// Define AreaServed interface
+interface AreaServed {
+  id: number;
+  county: string;
+  cities: string[];
+}
+
+// Define Area Card component
 const AreaCard = ({ area }: { area: AreaServed }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="p-6">
-        <h3 className="text-xl font-playfair font-semibold mb-4">{area.county} County</h3>
-        <ul className="space-y-2">
-          {area.cities.map((city, index) => (
-            <li key={index} className="flex items-start">
-              <i className="fas fa-map-marker-alt text-secondary mt-1 mr-2"></i>
-              <span>{city}</span>
-            </li>
-          ))}
-        </ul>
+        <h3 className="text-xl font-playfair font-semibold mb-3">{area.county} County</h3>
+        <div className="mb-4">
+          <h4 className="text-gray-700 font-medium mb-2">Key Cities & Areas:</h4>
+          <div className="flex flex-wrap gap-2">
+            {area.cities.map((city, index) => (
+              <span 
+                key={index} 
+                className="bg-light text-primary text-sm px-3 py-1 rounded-full"
+              >
+                {city}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-const Areas = () => {
-  const { data: areas, isLoading, error } = useQuery({ 
-    queryKey: ['/api/areas'],
-  });
+// Hardcoded area data
+const areasData: AreaServed[] = [
+  {
+    id: 1,
+    county: "Fulton",
+    cities: ["Atlanta", "Alpharetta", "Sandy Springs", "Roswell", "Johns Creek", "Milton"]
+  },
+  {
+    id: 2,
+    county: "DeKalb",
+    cities: ["Brookhaven", "Decatur", "Druid Hills", "Dunwoody"]
+  },
+  {
+    id: 3,
+    county: "Cobb",
+    cities: ["Marietta", "Kennesaw", "Smyrna"]
+  },
+  {
+    id: 4,
+    county: "Gwinnett",
+    cities: ["Loganville", "Norcross", "Duluth", "Suwanee", "Lilburn"]
+  },
+  {
+    id: 5,
+    county: "Cherokee",
+    cities: ["Woodstock"]
+  },
+  {
+    id: 6,
+    county: "Forsyth",
+    cities: ["Cumming"]
+  },
+  {
+    id: 7,
+    county: "Douglas",
+    cities: ["Douglasville"]
+  },
+  {
+    id: 8,
+    county: "Walton",
+    cities: ["Loganville"]
+  }
+];
 
+const Areas = () => {
   useEffect(() => {
     document.title = "Areas Served | Amita Sood Real Estate";
     // Scroll to top on page load
     window.scrollTo(0, 0);
   }, []);
-
-  if (isLoading) {
-    return (
-      <div className="bg-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-playfair font-bold mb-4">
-              Loading Areas...
-            </h2>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-playfair font-bold mb-4">
-              Error Loading Areas
-            </h2>
-            <p>Please try again later</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -96,7 +118,7 @@ const Areas = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {areas.map((area) => (
+            {areasData.map((area) => (
               <AreaCard key={area.id} area={area} />
             ))}
           </div>
@@ -163,39 +185,7 @@ const Areas = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" 
-                  alt="Suburban home" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" 
-                  alt="Atlanta neighborhood" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-primary bg-opacity-5 rounded-lg p-8 text-center">
-            <h2 className="text-2xl font-playfair font-bold mb-6">
-              Looking for a specific neighborhood?
-            </h2>
-            <p className="max-w-2xl mx-auto mb-8">
-              Let me help you explore the perfect area for your lifestyle, budget, and preferences.
-            </p>
-            <Link href="/contact">
-              <a className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200">
-                Contact Me Today
-              </a>
-            </Link>
           </div>
         </div>
       </section>

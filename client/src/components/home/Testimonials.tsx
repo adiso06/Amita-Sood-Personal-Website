@@ -1,10 +1,52 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { Testimonial } from "@shared/schema";
+
+interface Testimonial {
+  id: number;
+  name: string;
+  image?: string;
+  relationship: string;
+  text: string;
+  rating: number;
+  yearsWithRealtor?: number;
+  createdAt?: Date;
+}
 
 interface TestimonialCardProps {
   testimonial: Testimonial;
 }
+
+// Hardcoded testimonial data
+const testimonialData: Testimonial[] = [
+  {
+    id: 1,
+    name: "Robert Johnson",
+    relationship: "Client for 13+ years",
+    text: "We've been working with Amita for over 13 years. She's helped us buy multiple investment properties and our own home. Very honest, very personable and top of her game. I highly recommend her for both buying and selling.",
+    rating: 5,
+    yearsWithRealtor: 13,
+    image: "/images/amita-sood.jpg",
+    createdAt: new Date("2022-11-15")
+  },
+  {
+    id: 2,
+    name: "Sarah Williams",
+    relationship: "Purchased two homes",
+    text: "Amita will make home buying a breeze! She is professional, honest, and effective at negotiating with the other party. I've purchased two homes with her assistance and wouldn't hesitate to work with her again.",
+    rating: 5,
+    image: "/images/amita-sood.jpg",
+    createdAt: new Date("2022-02-11")
+  },
+  {
+    id: 3,
+    name: "Michael Thompson",
+    relationship: "Landlord for 7+ years",
+    text: "Amita has kept our interests as landlords in focus through multiple rental application processes over many years. She is knowledgeable, fair, and always responsive. I wouldn't trust anyone else with our properties.",
+    rating: 5,
+    yearsWithRealtor: 7,
+    image: "/images/amita-sood.jpg",
+    createdAt: new Date("2021-09-24")
+  }
+];
 
 const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
   return (
@@ -29,39 +71,6 @@ const TestimonialCard = ({ testimonial }: TestimonialCardProps) => {
 };
 
 const Testimonials = () => {
-  const { data: testimonials, isLoading, error } = useQuery({ 
-    queryKey: ['/api/testimonials'],
-  });
-
-  if (isLoading) {
-    return (
-      <section id="testimonials" className="py-20 bg-light">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-playfair font-bold mb-4">
-              Loading Testimonials...
-            </h2>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error) {
-    return (
-      <section id="testimonials" className="py-20 bg-light">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-playfair font-bold mb-4">
-              Error Loading Testimonials
-            </h2>
-            <p>Please try again later</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="testimonials" className="py-20 bg-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +85,7 @@ const Testimonials = () => {
 
         <div className="testimonial-slider relative">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.slice(0, 3).map((testimonial: Testimonial) => (
+            {testimonialData.slice(0, 3).map((testimonial) => (
               <TestimonialCard key={testimonial.id} testimonial={testimonial} />
             ))}
           </div>
