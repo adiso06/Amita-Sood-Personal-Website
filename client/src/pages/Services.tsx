@@ -123,10 +123,8 @@ const Services = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Link href="/contact">
-              <a className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200">
-                Contact Me About Services
-              </a>
+            <Link href="/contact" className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200">
+              Contact Me About Services
             </Link>
           </div>
         </div>

@@ -7,6 +7,7 @@ import Testimonials from "@/components/home/Testimonials";
 import Areas from "@/components/home/Areas";
 import ContactForm from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -16,13 +17,33 @@ const Home = () => {
 
   return (
     <>
-      <Hero />
-      <Stats />
-      <About />
-      <Services />
-      <Properties />
-      <Testimonials />
-      <Areas />
+      <ErrorBoundary>
+        <Hero />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Stats />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <About />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Services />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Properties />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Testimonials />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Areas />
+      </ErrorBoundary>
       
       <section id="contact" className="py-20 bg-light">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,10 +58,14 @@ const Home = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <ContactForm />
+              <ErrorBoundary>
+                <ContactForm />
+              </ErrorBoundary>
             </div>
             <div>
-              <ContactInfo />
+              <ErrorBoundary>
+                <ContactInfo />
+              </ErrorBoundary>
             </div>
           </div>
         </div>

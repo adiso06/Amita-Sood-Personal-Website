@@ -15,10 +15,8 @@ const ServiceCard = ({ icon, title, description, link }: ServiceProps) => {
       </div>
       <h3 className="text-xl font-semibold mb-3">{title}</h3>
       <p className="text-gray-600 mb-4">{description}</p>
-      <Link href={link}>
-        <a className="text-secondary hover:text-primary font-medium transition duration-200">
-          Learn More →
-        </a>
+      <Link href={link} className="text-secondary hover:text-primary font-medium transition duration-200">
+        Learn More →
       </Link>
     </div>
   );
@@ -101,10 +99,8 @@ const Services = () => {
         </div>
         
         <div className="text-center mt-12">
-          <Link href="/services">
-            <a className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200">
-              View All Services
-            </a>
+          <Link href="/services" className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200">
+            View All Services
           </Link>
         </div>
       </div>

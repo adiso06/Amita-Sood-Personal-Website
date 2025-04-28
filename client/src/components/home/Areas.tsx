@@ -92,10 +92,11 @@ const Areas = () => {
             </div>
 
             <div className="mt-8">
-              <Link href="/areas">
-                <a className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200">
-                  Get Neighborhood Insights
-                </a>
+              <Link 
+                href="/areas" 
+                className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200"
+              >
+                Get Neighborhood Insights
               </Link>
             </div>
           </div>

@@ -30,10 +30,8 @@ const About = () => {
               </div>
             </div>
             <div className="mt-8">
-              <Link href="/about">
-                <a className="text-secondary hover:text-primary font-medium transition duration-200">
-                  Learn more about my background →
-                </a>
+              <Link href="/about" className="text-secondary hover:text-primary font-medium transition duration-200">
+                Learn more about my background →
               </Link>
             </div>
           </div>

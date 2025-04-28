@@ -13,29 +13,32 @@ import Admin from "@/pages/Admin";
 import Login from "@/pages/Login";
 import NotFound from "@/pages/not-found";
 import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/services" component={Services} />
-          <Route path="/properties" component={Properties} />
-          <Route path="/properties/:id" component={PropertyDetail} />
-          <Route path="/testimonials" component={Testimonials} />
-          <Route path="/areas" component={Areas} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/login" component={Login} />
-          <Route path="/admin">
-            <ProtectedRoute>
-              <Admin />
-            </ProtectedRoute>
-          </Route>
-          <Route component={NotFound} />
-        </Switch>
+        <ErrorBoundary>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/services" component={Services} />
+            <Route path="/properties" component={Properties} />
+            <Route path="/properties/:id" component={PropertyDetail} />
+            <Route path="/testimonials" component={Testimonials} />
+            <Route path="/areas" component={Areas} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/login" component={Login} />
+            <Route path="/admin">
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            </Route>
+            <Route component={NotFound} />
+          </Switch>
+        </ErrorBoundary>
       </main>
       <Footer />
     </div>

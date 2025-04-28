@@ -28,38 +28,38 @@ const Footer = () => {
             <h3 className="text-xl font-playfair font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/">
-                  <a className="hover:text-secondary transition duration-200">Home</a>
+                <Link href="/" className="hover:text-secondary transition duration-200">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="/about">
-                  <a className="hover:text-secondary transition duration-200">About</a>
+                <Link href="/about" className="hover:text-secondary transition duration-200">
+                  About
                 </Link>
               </li>
               <li>
-                <Link href="/services">
-                  <a className="hover:text-secondary transition duration-200">Services</a>
+                <Link href="/services" className="hover:text-secondary transition duration-200">
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="/properties">
-                  <a className="hover:text-secondary transition duration-200">Properties</a>
+                <Link href="/properties" className="hover:text-secondary transition duration-200">
+                  Properties
                 </Link>
               </li>
               <li>
-                <Link href="/testimonials">
-                  <a className="hover:text-secondary transition duration-200">Testimonials</a>
+                <Link href="/testimonials" className="hover:text-secondary transition duration-200">
+                  Testimonials
                 </Link>
               </li>
               <li>
-                <Link href="/areas">
-                  <a className="hover:text-secondary transition duration-200">Areas Served</a>
+                <Link href="/areas" className="hover:text-secondary transition duration-200">
+                  Areas Served
                 </Link>
               </li>
               <li>
-                <Link href="/contact">
-                  <a className="hover:text-secondary transition duration-200">Contact</a>
+                <Link href="/contact" className="hover:text-secondary transition duration-200">
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -69,33 +69,33 @@ const Footer = () => {
             <h3 className="text-xl font-playfair font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services#buyers-agent">
-                  <a className="hover:text-secondary transition duration-200">Buyer's Agent</a>
+                <Link href="/services#buyers-agent" className="hover:text-secondary transition duration-200">
+                  Buyer's Agent
                 </Link>
               </li>
               <li>
-                <Link href="/services#listing-agent">
-                  <a className="hover:text-secondary transition duration-200">Listing Agent</a>
+                <Link href="/services#listing-agent" className="hover:text-secondary transition duration-200">
+                  Listing Agent
                 </Link>
               </li>
               <li>
-                <Link href="/services#investment-properties">
-                  <a className="hover:text-secondary transition duration-200">Investment Properties</a>
+                <Link href="/services#investment-properties" className="hover:text-secondary transition duration-200">
+                  Investment Properties
                 </Link>
               </li>
               <li>
-                <Link href="/services#relocation">
-                  <a className="hover:text-secondary transition duration-200">Relocation Specialist</a>
+                <Link href="/services#relocation" className="hover:text-secondary transition duration-200">
+                  Relocation Specialist
                 </Link>
               </li>
               <li>
-                <Link href="/services#first-time-buyers">
-                  <a className="hover:text-secondary transition duration-200">First-Time Homebuyers</a>
+                <Link href="/services#first-time-buyers" className="hover:text-secondary transition duration-200">
+                  First-Time Homebuyers
                 </Link>
               </li>
               <li>
-                <Link href="/services#landlord">
-                  <a className="hover:text-secondary transition duration-200">Landlord Representation</a>
+                <Link href="/services#landlord" className="hover:text-secondary transition duration-200">
+                  Landlord Representation
                 </Link>
               </li>
             </ul>

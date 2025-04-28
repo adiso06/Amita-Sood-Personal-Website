@@ -7,7 +7,7 @@ const PropertyDetail = () => {
   const { id } = useParams();
   const propertyId = parseInt(id || "0");
 
-  const { data: property, isLoading, error } = useQuery({
+  const { data: property, isLoading, error } = useQuery<Property>({
     queryKey: [`/api/properties/${propertyId}`],
     enabled: !!propertyId,
   });
@@ -64,11 +64,15 @@ const PropertyDetail = () => {
     );
   }
 
+  // Ensure property.images is always an array
+  const propertyImages = Array.isArray(property.images) ? property.images : [];
+  const mainImage = propertyImages.length > 0 ? propertyImages[0] : '/images/placeholder.jpg';
+
   return (
     <>
       <div
         className="relative h-[50vh] bg-cover bg-center"
-        style={{ backgroundImage: `url(${property.images[0]})` }}
+        style={{ backgroundImage: `url(${mainImage})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center relative z-10">
@@ -128,7 +132,7 @@ const PropertyDetail = () => {
 
                   <h2 className="text-2xl font-playfair font-bold mb-4">Features</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                    {property.features && property.features.map((feature, index) => (
+                    {Array.isArray(property.features) && property.features.map((feature, index) => (
                       <div key={index} className="flex items-center">
                         <i className="fas fa-check-circle text-secondary mr-2"></i>
                         <span>{feature}</span>
@@ -158,11 +162,11 @@ const PropertyDetail = () => {
                 </div>
               </div>
 
-              {property.images && property.images.length > 1 && (
+              {propertyImages.length > 1 && (
                 <div className="bg-white rounded-lg shadow-md overflow-hidden p-6 mb-8">
                   <h2 className="text-2xl font-playfair font-bold mb-4">Photo Gallery</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {property.images.map((image, index) => (
+                    {propertyImages.map((image, index) => (
                       <div key={index} className="rounded-lg overflow-hidden h-48">
                         <img src={image} alt={`${property.title} - Image ${index + 1}`} className="w-full h-full object-cover" />
                       </div>

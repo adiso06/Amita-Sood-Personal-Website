@@ -21,7 +21,7 @@ const Admin = () => {
   const queryClient = useQueryClient();
   const { toast } = useToast();
 
-  const { data: properties = [], isLoading } = useQuery({
+  const { data: properties = [], isLoading } = useQuery<Property[]>({
     queryKey: ['/api/properties'],
     enabled: isAuthenticated
   });
@@ -96,7 +96,7 @@ const Admin = () => {
       return <div className="text-center py-10">Loading properties...</div>;
     }
 
-    if (!properties.length) {
+    if (!Array.isArray(properties) || properties.length === 0) {
       return <div className="text-center py-10">No properties found.</div>;
     }
 
@@ -106,7 +106,7 @@ const Admin = () => {
           <Card key={property.id} className="overflow-hidden">
             <div className="h-48 overflow-hidden">
               <img 
-                src={property.images[0] || 'https://via.placeholder.com/300x200?text=No+Image'} 
+                src={(property.images && Array.isArray(property.images) && property.images.length > 0) ? property.images[0] : 'https://via.placeholder.com/300x200?text=No+Image'} 
                 alt={property.title}
                 className="w-full h-full object-cover"
               />
@@ -224,7 +224,9 @@ const Admin = () => {
           {renderPropertyList()}
         </TabsContent>
         <TabsContent value="active">
-          {properties.filter((p: Property) => p.status === 'active').length ? (
+          {!Array.isArray(properties) ? (
+            <div className="text-center py-10">No properties found.</div>
+          ) : properties.filter((p: Property) => p.status === 'active').length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {properties
                 .filter((p: Property) => p.status === 'active')
@@ -232,7 +234,7 @@ const Admin = () => {
                   <Card key={property.id} className="overflow-hidden">
                     <div className="h-48 overflow-hidden">
                       <img 
-                        src={property.images[0] || 'https://via.placeholder.com/300x200?text=No+Image'} 
+                        src={(property.images && Array.isArray(property.images) && property.images.length > 0) ? property.images[0] : 'https://via.placeholder.com/300x200?text=No+Image'} 
                         alt={property.title}
                         className="w-full h-full object-cover"
                       />
@@ -273,7 +275,9 @@ const Admin = () => {
           )}
         </TabsContent>
         <TabsContent value="sold">
-          {properties.filter((p: Property) => p.status === 'sold').length ? (
+          {!Array.isArray(properties) ? (
+            <div className="text-center py-10">No properties found.</div>
+          ) : properties.filter((p: Property) => p.status === 'sold').length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {properties
                 .filter((p: Property) => p.status === 'sold')
@@ -281,7 +285,7 @@ const Admin = () => {
                   <Card key={property.id} className="overflow-hidden">
                     <div className="h-48 overflow-hidden">
                       <img 
-                        src={property.images[0] || 'https://via.placeholder.com/300x200?text=No+Image'} 
+                        src={(property.images && Array.isArray(property.images) && property.images.length > 0) ? property.images[0] : 'https://via.placeholder.com/300x200?text=No+Image'} 
                         alt={property.title}
                         className="w-full h-full object-cover"
                       />
@@ -322,7 +326,9 @@ const Admin = () => {
           )}
         </TabsContent>
         <TabsContent value="luxury">
-          {properties.filter((p: Property) => p.isLuxury).length ? (
+          {!Array.isArray(properties) ? (
+            <div className="text-center py-10">No properties found.</div>
+          ) : properties.filter((p: Property) => p.isLuxury).length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {properties
                 .filter((p: Property) => p.isLuxury)
@@ -330,7 +336,7 @@ const Admin = () => {
                   <Card key={property.id} className="overflow-hidden">
                     <div className="h-48 overflow-hidden">
                       <img 
-                        src={property.images[0] || 'https://via.placeholder.com/300x200?text=No+Image'} 
+                        src={(property.images && Array.isArray(property.images) && property.images.length > 0) ? property.images[0] : 'https://via.placeholder.com/300x200?text=No+Image'} 
                         alt={property.title}
                         className="w-full h-full object-cover"
                       />

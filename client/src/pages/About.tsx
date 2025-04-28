@@ -181,10 +181,8 @@ const About = () => {
           </div>
           
           <div className="text-center mt-10">
-            <Link href="/services">
-              <a className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200">
-                Explore My Services
-              </a>
+            <Link href="/services" className="inline-block bg-secondary hover:bg-opacity-90 text-white px-6 py-3 rounded font-medium transition duration-200">
+              Explore My Services
             </Link>
           </div>
         </div>
