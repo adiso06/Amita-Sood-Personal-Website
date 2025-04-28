@@ -9,7 +9,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "npm install -g vite && cd client && npm install && npx vite build",
+        "buildCommand": "cd client && npm install && npx vite@5.4.14 build",
         "outputDirectory": "client/dist",
         "distDir": "client/dist"
       }
