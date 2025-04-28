@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Rule: Never suggest shortcuts or workarounds like duplicating code, creating duplicate schema files, or modifying components to avoid dependencies. Always respect the existing architecture and find solutions that maintain code integrity, even if they're more complex.

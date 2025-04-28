@@ -33,7 +33,13 @@ const ContactForm = () => {
   
   const mutation = useMutation({
     mutationFn: async (formData: ContactFormValues) => {
-      return apiRequest("POST", "/api/contact", formData);
+      return apiRequest("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
     },
     onSuccess: async (response) => {
       const data = await response.json();
